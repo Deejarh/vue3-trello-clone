@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import type { Card, Task } from '@/types'
 import { nanoid } from 'nanoid'
 import BoardTask from './BoardTasks.vue'
+import AddTask from './AddTask.vue'
 import DragButton from './DragButton.vue'
 import draggable from 'vuedraggable'
 import { useKeyModifier } from '@vueuse/core'
@@ -36,6 +37,7 @@ const cards = ref<Card>([
     tasks: []
   }
 ])
+
 </script>
 
 <template>
@@ -62,14 +64,12 @@ const cards = ref<Card>([
             :animation="150"
           >
             <template #item="{ element: task }: { element: Task }">
-              <div><BoardTask :task="task" /></div>
+              <div><BoardTask :task="task" @deleteTask="card.tasks = card.tasks.filter((task) => task.id !== $event)" /></div>
             </template>
           </draggable>
 
           <footer>
-            <button @click="addTask" class="text-gray-500 text-sm font-medium mt-2">
-              + Add a card
-            </button>
+            <add-task @AddTask="card.tasks.push($event)" />             
           </footer>
         </div>
       </template>
