@@ -13,16 +13,16 @@ const titleFocused = ref(false)
 const cards = useLocalStorage<Card[]>('board', [
   {
     id: nanoid(),
-    title: 'backlog',
+    title: 'Backlog',
     tasks: [
       {
         id: nanoid(),
-        title: 'First task',
+        title: 'Write a Letter',
         createdAt: new Date()
       },
       {
         id: nanoid(),
-        title: 'second task',
+        title: 'Go to Market',
         createdAt: new Date()
       }
     ]
@@ -30,11 +30,6 @@ const cards = useLocalStorage<Card[]>('board', [
   {
     id: nanoid(),
     title: 'In Progress',
-    tasks: []
-  },
-  {
-    id: nanoid(),
-    title: 'ToDo',
     tasks: []
   }
 ])
