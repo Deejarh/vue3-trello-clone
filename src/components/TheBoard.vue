@@ -7,6 +7,8 @@ import AddTask from './AddTask.vue'
 import DragButton from './DragButton.vue'
 import draggable from 'vuedraggable'
 import { useKeyModifier, useLocalStorage } from '@vueuse/core'
+import DeleteIcon from '@/components/DeleteIcon.vue'
+
 
 const alt = useKeyModifier('Alt')
 const titleFocused = ref(false)
@@ -30,9 +32,24 @@ const cards = useLocalStorage<Card[]>('board', [
   {
     id: nanoid(),
     title: 'In Progress',
-    tasks: []
+    tasks: [
+      {
+        id: nanoid(),
+        title: 'Fix a bug',
+        createdAt: new Date()
+      },
+      {
+        id: nanoid(),
+        title: 'Move me 😊',
+        createdAt: new Date()
+      },
+    ]
   }
 ])
+
+const deleteCard = (card: Card) => {
+  cards.value = cards.value.filter((c: Card) => c.id !== card.id)
+}
 
 const addCard = () => {
   const card: Card = {
@@ -63,18 +80,18 @@ const addCard = () => {
       item-key="id"
       :animation="200"
       handle=".drag-handle"
-      class="flex gap-x-4 overflow-x-auto dark:text-white text-black items-start"
+      class="flex gap-x-4 overflow-x-auto overflow-y-hidden dark:text-white text-black items-start"
     >
       <template #item="{ element: card }: { element: Card }">
         <div
-          class="bg-gray-200 p-3 rounded lg:min-w-[250px] min-w-[200px] shadow-lg text-black card"
+          class="bg-gray-200 p-3 rounded lg:max-w-[280px] max-w-[200px] shadow-lg text-black card"
         >
-          <header class="lg:font-bold font-semibold lg:text-lg text-sm mb-4 mt-2 capitalize flex items-center">
+          <header class="font-semibold lg:text-lg text-sm mb-4 mt-2 capitalize flex items-center">
             <drag-button />
             <input
               @focus="titleFocused = true"
               @blur="titleFocused = false"
-              class="title-input flex justify-start items-start bg-transparent focus:bg-white rounded px-1 w-4/5 capitalize outline-red-100"
+              class="title-input  flex justify-start items-start bg-transparent focus:bg-white rounded px-1 w-4/5 capitalize outline-red-100"
               @keyup.enter="($event.target as HTMLInputElement).blur()"
               @keydown.backspace="
                 card.title === '' ? (cards = cards.filter((c) => c.id !== card.id)) : null
@@ -82,6 +99,8 @@ const addCard = () => {
               type="text"
               v-model="card.title"
             />
+
+            <span v-show="card.title === ''" class=" cursor-pointer ml-2" @click="deleteCard(card)"><delete-icon/></span>
           </header>
           <draggable
             v-model="card.tasks"
@@ -108,4 +127,5 @@ const addCard = () => {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+</style>

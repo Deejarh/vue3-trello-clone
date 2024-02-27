@@ -3,6 +3,7 @@ import { defineProps, ref } from 'vue'
 import type { Task } from '@/types'
 import { nanoid } from 'nanoid'
 import { onKeyStroke } from '@vueuse/core'
+import DeleteIcon from '@/components/DeleteIcon.vue'
 
 const props = defineProps<{
   task: Task
@@ -19,32 +20,23 @@ onKeyStroke('Backspace', (e) => {
 </script>
 
 <template>
-  <div class="task" @blur="focused = false" @focus="focused = true" tabindex="0">
-    <p
-      class="bg-white mb-2 rounded lg:max-w-[250px] max-w-[200px] p-2 lg:text-sm text-xs flex justify-between"
+  <div class="task bg-white lg:max-w-[280px] max-w-[200px] rounded" @blur="focused = false" @focus="focused = true" tabindex="0">
+    <div
+      class=" mb-2 rounded  p-2 lg:text-sm text-xs flex  items-center  justify-between break-words  cursor-move  "
     >
-      {{ task.title }}
-      <span class="cursor-pointer" v-show="focused" @click="emit('deleteTask', task.id)">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="text-gray-800"
-          viewBox="0 0 24 24"
-          width="16"
-          height="16"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="M3 6h18M5 6v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6M9 11v6M15 11v6"></path>
-        </svg>
+      <p class=" h-auto  break-words"> {{ task.title }} </p>
+      <span class="cursor-pointer ml-2 flex items-end" v-show="focused" @click="emit('deleteTask', task.id)">
+      <delete-icon/>
       </span>
-    </p>
+    </div>
   </div>
 </template>
 
 <style scoped>
+.task p {
+    word-wrap: break-word; 
+    word-break: break-word;
+  }
 .sortable-drag .task {
   transform: rotate(5deg);
 }
