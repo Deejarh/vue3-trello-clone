@@ -69,7 +69,7 @@ const addCard = () => {
         <div
           class="bg-gray-200 p-4 rounded lg:min-w-[250px] min-w-[200px] shadow-lg text-black card"
         >
-          <header class="font-bold text-lg mb-4 capitalize flex items-center">
+          <header class="lg:font-bold font-semibold lg:text-lg text-sm mb-4 capitalize flex items-center">
             <drag-button />
             <input
               @focus="titleFocused = true"

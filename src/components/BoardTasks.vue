@@ -21,7 +21,7 @@ onKeyStroke('Backspace', (e) => {
 <template>
   <div class="task" @blur="focused = false" @focus="focused = true" tabindex="0">
     <p
-      class="bg-white mb-2 rounded lg:max-w-[250px] max-w-[200px] p-2 text-sm flex justify-between"
+      class="bg-white mb-2 rounded lg:max-w-[250px] max-w-[200px] p-2 lg:text-sm text-xs flex justify-between"
     >
       {{ task.title }}
       <span class="cursor-pointer" v-show="focused" @click="emit('deleteTask', task.id)">

@@ -47,7 +47,7 @@ const createTask = (e: Event) => {
       :class="[
         isFocus
           ? ' bg-white h-20 p-3 text-sm rounded'
-          : ' cursor-pointer h-7 text-gray-500 text-sm font-medium mt-2 border-0 bg-gray-200'
+          : ' cursor-pointer h-7 text-gray-500 lg:text-sm text-xs font-medium mt-2 border-0 bg-gray-200'
       ]"
       @focus="isFocus = true"
       @keydown.tab="createTask"
@@ -58,7 +58,7 @@ const createTask = (e: Event) => {
       <div
         v-if="isFocus"
         @click="createTask"
-        class="text-xs bg-red-200 p-1 rounded-md px-2 font-semibold hover:opacity-70 cursor-pointer"
+        class="text-xs bg-red-200 p-1 rounded-md px-2 lg:font-semibold font-medium  hover:opacity-70 cursor-pointer"
       >
         Add Task
       </div>
