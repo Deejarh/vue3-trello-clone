@@ -71,7 +71,7 @@ const addCard = () => {
         class="dark:bg-white bg-black flex justify-center items-center py-2 px-3 rounded-full mb-8 cursor-pointer font-semibold hover:opacity-70 text-white dark:text-black text-xs"
         @click="addCard"
       >
-        + Add A Card
+        + Add a card
       </div>
     </div>
     <draggable
@@ -84,7 +84,7 @@ const addCard = () => {
     >
       <template #item="{ element: card }: { element: Card }">
         <div
-          class="bg-gray-200 p-3 rounded lg:max-w-[280px] max-w-[200px] shadow-lg text-black card"
+          class="bg-gray-200 p-3 rounded-xl lg:max-w-[280px] max-w-[200px] shadow-lg text-black card"
         >
           <header class="font-semibold lg:text-lg text-sm mb-4 mt-2 capitalize flex items-center">
             <drag-button />

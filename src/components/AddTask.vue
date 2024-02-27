@@ -52,7 +52,7 @@ const createTask = (e: Event) => {
       @focus="isFocus = true"
       @keydown.tab="createTask"
       @keyup.enter="createTask"
-      :placeholder="isFocus ? 'Enter a title for this card' : '+ Add A Task'"
+      :placeholder="isFocus ? 'Enter a title for this card' : '+ Add a task'"
     ></textarea>
     <div class="flex justify-between mt-3 w-full">
       <div
