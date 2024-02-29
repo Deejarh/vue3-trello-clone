@@ -20,7 +20,7 @@ onKeyStroke('Backspace', (e) => {
 </script>
 
 <template>
-  <div class="task bg-white lg:min-w-[250px] min-w-[230px] rounded-lg shadow-lg" @blur="focused = false" @focus="focused = true" tabindex="0">
+  <div class="task bg-white lg:min-w-[250px] min-w-[230px] rounded-lg shadow-lg mr-1" @blur="focused = false" @focus="focused = true" tabindex="0">
     <div
       class=" mb-2 rounded  p-2 lg:text-sm text-xs flex  items-center  justify-between break-words  cursor-move  "
     >

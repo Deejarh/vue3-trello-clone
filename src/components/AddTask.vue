@@ -47,7 +47,7 @@ const createTask = (e: Event) => {
       :class="[
         isFocus
           ? ' bg-white h-20 p-3 text-sm rounded'
-          : ' cursor-pointer h-7 text-gray-500 lg:text-sm text-xs font-medium mt-2 border-0 bg-gray-200'
+          : ' cursor-pointer h-7 text-gray-500 lg:text-sm text-xs font-medium mt-2 ml-1 border-0 bg-gray-200'
       ]"
       @focus="isFocus = true"
       @keydown.tab="createTask"
