@@ -84,7 +84,7 @@ const addCard = () => {
     >
       <template #item="{ element: card }: { element: Card }">
         <div
-          class="bg-gray-200 p-3 rounded-xl lg:max-w-[280px] max-w-[200px] shadow-lg text-black card"
+          class="bg-gray-200 p-3 rounded-xl lg:max-w-[280px] max-w-[250px] shrink-0 shadow-lg text-black card"
         >
           <header class="font-semibold lg:text-lg text-sm mb-4 mt-2 capitalize flex items-center">
             <drag-button />
